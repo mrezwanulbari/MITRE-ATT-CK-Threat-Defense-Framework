@@ -1,0 +1,16 @@
+`--- Unusual Outbound Data Volume ---`
+index=firewall OR index=proxy action=allowed
+| where src_zone="internal" AND dest_zone="external"
+| stats sum(bytes_out) as total_bytes_out by src_ip, user
+| eval gb_out=round(total_bytes_out/1073741824, 2)
+| where gb_out > 1
+| sort -gb_out
+| table src_ip, user, gb_out
+
+`--- Archive Creation Before Exfil ---`
+index=win sourcetype="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational"
+EventCode=1
+| where match(CommandLine, "(?i)(7z|rar|zip|tar|compress-archive)")
+| where match(CommandLine, "(?i)(users|documents|desktop|password|sensitive|confidential)")
+| table _time, Computer, User, ParentCommandLine, CommandLine
+| sort -_time
