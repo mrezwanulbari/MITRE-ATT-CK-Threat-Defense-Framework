@@ -1,0 +1,9 @@
+| tstats count min(_time) as firstTime max(_time) as lastTime
+  from datamodel=Endpoint.Processes
+  where Processes.process_name=schtasks.exe
+  AND (Processes.process="*create*")
+  AND (Processes.process="*powershell*" OR Processes.process="*cmd*"
+       OR Processes.process="*wscript*" OR Processes.process="*mshta*")
+  by Processes.dest Processes.user Processes.process
+  | `security_content_ctime(firstTime)` | `security_content_ctime(lastTime)`
+  | sort -count
