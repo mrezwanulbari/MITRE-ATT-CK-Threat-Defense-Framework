@@ -7,7 +7,6 @@
 
 > A comprehensive threat hunting toolkit featuring Sigma detection rules, YARA malware signatures, SPL/KQL hunting queries, structured hunting playbooks, and MITRE ATT&CK technique mappings for proactive cyber defense operations.
 
-```markdown
 # MITRE ATT&CK Threat Defense Framework
 This repository implements a **comprehensive defense strategy** based on the **MITRE ATT&CK Framework** to mitigate advanced persistent threats (APTs).
 
