@@ -1,4 +1,4 @@
-# Threat Hunting — Proactive Cyber Defense & Detection Engineering
+# MITRE ATT&CK Threat Defense Framework - Comprehensive framework for threat detection and defense
 
 ![MITRE ATT&CK](https://img.shields.io/badge/MITRE_ATT%26CK-v14-red?style=for-the-badge)
 ![Sigma](https://img.shields.io/badge/Sigma-Rules-blue?style=for-the-badge)
