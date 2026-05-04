@@ -641,6 +641,15 @@ search_query = "index=security sourcetype=windows EventCode=4688"
 
 ---
 
+## Installation:
+```bash
+git clone https://github.com/mrezwanulbari/MITRE-ATT-CK-Threat-Defense-Framework.git
+cd MITRE-ATT-CK-Threat-Defense-Framework
+python setup.py install
+```
+
+---
+
 ## Contributing
 
 Contributions welcome! All rules must include author, date, MITRE tags, and false positive documentation.
