@@ -8,12 +8,53 @@
 > A comprehensive threat hunting toolkit featuring Sigma detection rules, YARA malware signatures, SPL/KQL hunting queries, structured hunting playbooks, and MITRE ATT&CK technique mappings for proactive cyber defense operations.
 
 # MITRE ATT&CK Threat Defense Framework
-This repository implements a **comprehensive defense strategy** based on the **MITRE ATT&CK Framework** to mitigate advanced persistent threats (APTs).
+This repository provides a practical, operational threat‑defense framework aligned with the MITRE ATT&CK knowledge base. It integrates detection engineering, hunting queries, Sigma rules, YARA rules, SOC playbooks, and ATT&CK coverage mapping into a unified structure that can be adopted by financial institutions, critical infrastructure, and cloud‑first enterprises.
+
+The goal is simple: **turn ATT&CK theory into real, deployable defense capabilities.**
+
+## 🎯 Purpose
+
+This framework is designed for:
+
+- SOC teams building ATT&CK‑aligned detection programs  
+- Detection engineers developing behavioral analytics  
+- Cybersecurity architects designing enterprise defense strategies  
+- Cloud security teams operationalizing identity and workload detections  
+- Organizations seeking measurable ATT&CK coverage
+---
 
 ## Features:
 - **Real-time detection** of tactics and techniques as defined by MITRE ATT&CK
 - **Automated threat mitigation** based on ATT&CK's defensive techniques
 - Integration with **Splunk SIEM** for improved visibility
+---
+
+## 🚀 How to Use This Framework
+
+1. **Start with the overview**  
+   `docs/overview.md`
+
+2. **Understand the methodology**  
+   `docs/methodology.md`
+
+3. **Review ATT&CK coverage**  
+   `mitre-attack/coverage-matrix.md`
+
+4. **Deploy detections**  
+   - Sigma rules  
+   - YARA rules  
+   - KQL hunting queries  
+
+5. **Operationalize SOC playbooks**  
+   `playbooks/`
+
+6. **Use mappings to connect techniques → detections → response**  
+   `mappings/enterprise.json`  
+   `mappings/cloud.json`
+
+7. **Follow the implementation guide**  
+   `docs/implementation-guide.md`
+
 ---
 
 ## 📋 Table of Contents
@@ -648,6 +689,14 @@ cd MITRE-ATT-CK-Threat-Defense-Framework
 python setup.py install
 ```
 
+---
+## 📘 Author
+
+**Shakil Md. Rezwanul Bari**  
+Cybersecurity Architect | Cloud Security | Threat Detection Engineering  
+Website: shakilbari.com  
+LinkedIn: linkedin.com/in/shakilbari  
+Email: rezwanbari@gmail.com
 ---
 
 ## Contributing
