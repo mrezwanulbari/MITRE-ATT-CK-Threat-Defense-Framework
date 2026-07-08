@@ -1,13 +1,15 @@
-# MITRE ATT&CK Threat Defense Framework — Overview
+# Overview
 
-This framework operationalizes MITRE ATT&CK for enterprise environments, enabling SOC teams, detection engineers, and cybersecurity architects to build measurable, repeatable, and scalable defense capabilities.
+The MITRE ATT&CK Threat Defense Framework transforms ATT&CK techniques into practical, deployable defense capabilities. While ATT&CK provides a comprehensive catalog of adversary behaviors, organizations often struggle to operationalize it.
 
-It integrates:
+This framework solves that problem by integrating:
+
 - Detection engineering lifecycle
-- Hunting queries
-- Sigma and YARA rules
+- Hunting queries (KQL)
+- Sigma rules
+- YARA rules
 - SOC playbooks
-- MITRE ATT&CK coverage mapping
-- Cloud, endpoint, identity, and network defense strategies
+- ATT&CK coverage mapping
+- Cloud, identity, endpoint, and network defense strategies
 
-This repository reflects real-world practices used in financial institutions and critical infrastructure environments.
+It is built from real-world experience in financial institutions and critical infrastructure environments.
