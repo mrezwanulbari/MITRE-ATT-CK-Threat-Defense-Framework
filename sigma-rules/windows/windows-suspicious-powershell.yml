@@ -1,0 +1,22 @@
+title: Suspicious PowerShell Execution
+id: win-powershell-suspicious
+status: experimental
+description: Detects suspicious PowerShell execution patterns often used in lateral movement or initial access.
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith: '\powershell.exe'
+    CommandLine|contains:
+      - 'EncodedCommand'
+      - 'IEX'
+      - 'Invoke-WebRequest'
+  condition: selection
+fields:
+  - CommandLine
+  - ParentImage
+level: medium
+tags:
+  - attack.execution
+  - attack.t1059.001
