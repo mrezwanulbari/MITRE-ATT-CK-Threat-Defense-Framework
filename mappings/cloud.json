@@ -1,0 +1,9 @@
+{
+  "TA0003": {
+    "T1078": {
+      "description": "Valid Accounts",
+      "detections": ["hunting-queries/kql/identity-hunting.kql"],
+      "controls": ["Azure AD Conditional Access", "AWS IAM Guardrails"]
+    }
+  }
+}
