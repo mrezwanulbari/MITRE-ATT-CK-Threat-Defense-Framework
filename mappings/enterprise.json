@@ -1,9 +1,17 @@
 {
-  "TA0001": {
+  "TA0002": {
     "T1059": {
       "description": "Command and Scripting Interpreter",
-      "detections": ["sigma-rules/linux/linux-reverse-shell.yml"],
-      "playbooks": ["playbooks/07-ransomware-precursor-hunting.md"]
+      "detections": [
+        "sigma-rules/linux/linux-reverse-shell.yml"
+      ],
+      "playbooks": [
+        "playbooks/07-ransomware-precursor-hunting.md"
+      ],
+      "controls": [
+        "Endpoint EDR behavioral monitoring",
+        "Shell execution restrictions"
+      ]
     }
   }
 }
