@@ -1,0 +1,7 @@
+// Privilege Escalation Hunting Query
+SecurityEvent
+| where EventID in (4672, 4688)
+| where AccountType == "User"
+| where Privileges has_any ("SeDebugPrivilege", "SeImpersonatePrivilege", "SeTcbPrivilege")
+| project TimeGenerated, Account, Privileges, Process, CommandLine, Computer
+| order by TimeGenerated desc
