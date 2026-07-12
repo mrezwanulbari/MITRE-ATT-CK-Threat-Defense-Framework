@@ -1,35 +1,29 @@
 # MITRE ATT&CK Detection Coverage Matrix
 
-## Coverage Summary
+**This file previously claimed "85+ techniques with detection, ~42% coverage" — that figure did not reflect reality and has been corrected.** The actual number of techniques with a real Sigma or YARA rule file in this repository, verified by scanning the rule files directly, is documented below. See [`tooling/attack-coverage-generator/`](../tooling/attack-coverage-generator/) for the tool that generates this — it can't overstate coverage because it only reports what it finds an actual rule for.
+
+## Coverage Summary (Accurate, Tool-Verified)
 
 | Metric | Value |
 |---|---|
-| Total Techniques (v14) | 201 |
-| Techniques with Detection | 85+ |
-| Coverage Percentage | ~42% |
-| Priority Gap Areas | Discovery, Collection, Resource Development |
+| Total ATT&CK Techniques (v15, Enterprise) | 200+ |
+| Techniques with an actual rule file in this repo | **10** |
+| Coverage percentage | ~5% of the full Enterprise matrix |
 
-## Coverage by Tactic
+A small, honest number reflecting real, working detections is worth more than a large estimated one — every technique listed below has a specific rule file backing it, checkable by anyone who clones the repo.
 
-| Tactic | Techniques Covered | Coverage |
-|---|---|---|
-| Initial Access (TA0001) | T1566, T1190, T1078, T1133 | High |
-| Execution (TA0002) | T1059, T1204, T1047 | High |
-| Persistence (TA0003) | T1053, T1547, T1505 | High |
-| Privilege Escalation (TA0004) | T1548, T1068, T1134 | Medium |
-| Defense Evasion (TA0005) | T1027, T1562, T1070 | Medium |
-| Credential Access (TA0006) | T1003, T1558, T1110 | High |
-| Discovery (TA0007) | T1087, T1082, T1083 | Medium |
-| Lateral Movement (TA0008) | T1021, T1550, T1570 | High |
-| Collection (TA0009) | T1560, T1114 | Medium |
-| Exfiltration (TA0010) | T1048, T1567 | Medium |
-| Command & Control (TA0011) | T1071, T1573, T1572 | High |
-| Impact (TA0040) | T1486, T1490, T1489 | High |
+## Techniques With Real Coverage
+
+See the full generated table (technique ID, description, and exact rule filename) in [`examples/generated-coverage-report.md`](../examples/generated-coverage-report.md), or upload [`examples/generated-navigator-layer.json`](../examples/generated-navigator-layer.json) to the [ATT&CK Navigator](https://mitre-attack.github.io/attack-navigator/) to see it visually.
 
 ## Priority Gaps for Development
 
-1. T1087 - Account Discovery
-2. T1560 - Archive Collected Data
-3. T1567 - Exfiltration to Cloud Storage
-4. T1574 - Hijack Execution Flow
-5. T1055 - Process Injection
+Given the current coverage is concentrated in credential access, execution, and persistence, the highest-value next additions (common, high-impact techniques not yet covered) are:
+
+1. T1055 — Process Injection
+2. T1087 — Account Discovery
+3. T1566 — Phishing (initial access — currently zero coverage on the initial access tactic entirely)
+4. T1071 — Application Layer Protocol (C2)
+5. T1486 — Data Encrypted for Impact (ransomware — see the dedicated [ransomware-defense-framework](https://github.com/mrezwanulbari/ransomware-defense-framework) repo for deeper coverage here)
+
+Adding a rule for any of these and re-running the coverage generator will update the numbers above automatically.
