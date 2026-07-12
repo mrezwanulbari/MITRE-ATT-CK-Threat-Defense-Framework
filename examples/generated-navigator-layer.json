@@ -23,24 +23,6 @@
   "hideDisabled": false,
   "techniques": [
     {
-      "techniqueID": "T1059.001",
-      "score": 100,
-      "color": "",
-      "comment": "Covered by: windows-suspicious-powershell.yml, win-susp-powershell-encoded-cmd.yml",
-      "enabled": true,
-      "metadata": [],
-      "showSubtechniques": false
-    },
-    {
-      "techniqueID": "T1547.001",
-      "score": 100,
-      "color": "",
-      "comment": "Covered by: win-persistence-run-key.yml",
-      "enabled": true,
-      "metadata": [],
-      "showSubtechniques": false
-    },
-    {
       "techniqueID": "T1505.003",
       "score": 100,
       "color": "",
@@ -50,46 +32,10 @@
       "showSubtechniques": false
     },
     {
-      "techniqueID": "T1558.003",
-      "score": 100,
-      "color": "",
-      "comment": "Covered by: win-kerberoasting.yml",
-      "enabled": true,
-      "metadata": [],
-      "showSubtechniques": false
-    },
-    {
-      "techniqueID": "T1053.003",
-      "score": 100,
-      "color": "",
-      "comment": "Covered by: linux-cron-persistence.yml",
-      "enabled": true,
-      "metadata": [],
-      "showSubtechniques": false
-    },
-    {
       "techniqueID": "T1059.004",
       "score": 100,
       "color": "",
       "comment": "Covered by: linux-reverse-shell.yml",
-      "enabled": true,
-      "metadata": [],
-      "showSubtechniques": false
-    },
-    {
-      "techniqueID": "T1548.001",
-      "score": 100,
-      "color": "",
-      "comment": "Covered by: linux-privilege-escalation-suid.yml",
-      "enabled": true,
-      "metadata": [],
-      "showSubtechniques": false
-    },
-    {
-      "techniqueID": "T1003.001",
-      "score": 100,
-      "color": "",
-      "comment": "Covered by: win-credential-dumping-lsass.yml, mimikatz-indicators.yar",
       "enabled": true,
       "metadata": [],
       "showSubtechniques": false
@@ -108,6 +54,60 @@
       "score": 100,
       "color": "",
       "comment": "Covered by: win-susp-powershell-encoded-cmd.yml",
+      "enabled": true,
+      "metadata": [],
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1053.003",
+      "score": 100,
+      "color": "",
+      "comment": "Covered by: linux-cron-persistence.yml",
+      "enabled": true,
+      "metadata": [],
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1059.001",
+      "score": 100,
+      "color": "",
+      "comment": "Covered by: windows-suspicious-powershell.yml, win-susp-powershell-encoded-cmd.yml",
+      "enabled": true,
+      "metadata": [],
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1558.003",
+      "score": 100,
+      "color": "",
+      "comment": "Covered by: win-kerberoasting.yml",
+      "enabled": true,
+      "metadata": [],
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1003.001",
+      "score": 100,
+      "color": "",
+      "comment": "Covered by: win-credential-dumping-lsass.yml, mimikatz-indicators.yar",
+      "enabled": true,
+      "metadata": [],
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1547.001",
+      "score": 100,
+      "color": "",
+      "comment": "Covered by: win-persistence-run-key.yml",
+      "enabled": true,
+      "metadata": [],
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1548.001",
+      "score": 100,
+      "color": "",
+      "comment": "Covered by: linux-privilege-escalation-suid.yml",
       "enabled": true,
       "metadata": [],
       "showSubtechniques": false
