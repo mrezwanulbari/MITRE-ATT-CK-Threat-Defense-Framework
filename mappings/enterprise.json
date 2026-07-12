@@ -3,7 +3,9 @@
     "T1059": {
       "description": "Command and Scripting Interpreter",
       "detections": [
-        "sigma-rules/linux/linux-reverse-shell.yml"
+        "sigma-rules/linux/linux-reverse-shell.yml",
+        "sigma-rules/windows/windows-suspicious-powershell.yml",
+        "sigma-rules/windows/process-creation/win-susp-powershell-encoded-cmd.yml"
       ],
       "playbooks": [
         "playbooks/07-ransomware-precursor-hunting.md"
@@ -11,6 +13,108 @@
       "controls": [
         "Endpoint EDR behavioral monitoring",
         "Shell execution restrictions"
+      ]
+    }
+  },
+  "TA0003": {
+    "T1053": {
+      "description": "Scheduled Task/Job",
+      "detections": [
+        "sigma-rules/linux/linux-cron-persistence.yml"
+      ],
+      "playbooks": [],
+      "controls": [
+        "Cron/scheduled task change auditing",
+        "Restrict crontab write access to authorized accounts"
+      ]
+    },
+    "T1547": {
+      "description": "Boot or Logon Autostart Execution",
+      "detections": [
+        "sigma-rules/windows/registry/win-persistence-run-key.yml"
+      ],
+      "playbooks": [],
+      "controls": [
+        "Registry Run key write monitoring",
+        "Application allowlisting"
+      ]
+    },
+    "T1505": {
+      "description": "Server Software Component (Web Shell)",
+      "detections": [],
+      "yara_detections": [
+        "yara-rules/malware/webshell-generic.yar"
+      ],
+      "playbooks": [],
+      "controls": [
+        "Web server file integrity monitoring",
+        "Restrict web-writable directories from execution"
+      ]
+    }
+  },
+  "TA0004": {
+    "T1548": {
+      "description": "Abuse Elevation Control Mechanism",
+      "detections": [
+        "sigma-rules/linux/linux-privilege-escalation-suid.yml"
+      ],
+      "playbooks": [],
+      "controls": [
+        "SUID/SGID binary inventory and alerting on new additions",
+        "Least-privilege enforcement"
+      ]
+    }
+  },
+  "TA0005": {
+    "T1027": {
+      "description": "Obfuscated Files or Information",
+      "detections": [
+        "sigma-rules/windows/process-creation/win-susp-powershell-encoded-cmd.yml"
+      ],
+      "playbooks": [],
+      "controls": [
+        "PowerShell script block logging",
+        "Encoded command detection"
+      ]
+    }
+  },
+  "TA0006": {
+    "T1003": {
+      "description": "OS Credential Dumping",
+      "detections": [
+        "sigma-rules/windows/process-creation/win-credential-dumping-lsass.yml"
+      ],
+      "yara_detections": [
+        "yara-rules/malware/mimikatz-indicators.yar"
+      ],
+      "playbooks": [],
+      "controls": [
+        "LSASS process access restriction (Credential Guard)",
+        "EDR credential-theft behavioral detection"
+      ]
+    },
+    "T1558": {
+      "description": "Steal or Forge Kerberos Tickets",
+      "detections": [
+        "sigma-rules/windows/authentication/win-kerberoasting.yml"
+      ],
+      "playbooks": [],
+      "controls": [
+        "Managed Service Account adoption to reduce kerberoastable accounts",
+        "SPN account password complexity/rotation policy"
+      ]
+    }
+  },
+  "TA0008": {
+    "T1550": {
+      "description": "Use Alternate Authentication Material",
+      "detections": [
+        "sigma-rules/windows/authentication/win-pass-the-hash.yml"
+      ],
+      "playbooks": [],
+      "controls": [
+        "Local Administrator Password Solution (LAPS)",
+        "Restrict NTLM where feasible"
       ]
     }
   }
