@@ -627,22 +627,25 @@ PRECURSOR TIMELINE:
 
 ## MITRE ATT&CK Coverage
 
-### Detection Coverage Matrix
+### Detection Coverage — Generated From Actual Rules, Not Hand-Estimated
 
-| Tactic | Techniques Covered | Coverage |
+**Important correction:** an earlier version of this README listed a hand-written coverage table claiming High/Medium coverage across roughly 35 techniques. That table did not reflect reality — this repository currently has actual Sigma/YARA rule files backing **10 specific techniques**. The table below is generated directly from those rule files by [`tooling/attack-coverage-generator/`](tooling/attack-coverage-generator/) — it cannot silently overstate coverage the way a hand-maintained table can, because it only lists what it actually finds a rule file for.
+
+| Technique ID | Description | Covered By |
 |---|---|---|
-| **Initial Access** (TA0001) | T1566, T1190, T1078, T1133 | High |
-| **Execution** (TA0002) | T1059, T1204, T1047 | High |
-| **Persistence** (TA0003) | T1053, T1547, T1505 | High |
-| **Privilege Escalation** (TA0004) | T1548, T1068, T1134 | Medium |
-| **Defense Evasion** (TA0005) | T1027, T1562, T1070 | Medium |
-| **Credential Access** (TA0006) | T1003, T1558, T1110 | High |
-| **Discovery** (TA0007) | T1087, T1082, T1083 | Medium |
-| **Lateral Movement** (TA0008) | T1021, T1550, T1570 | High |
-| **Collection** (TA0009) | T1560, T1114 | Medium |
-| **Exfiltration** (TA0010) | T1048, T1567 | Medium |
-| **Command & Control** (TA0011) | T1071, T1573, T1572 | High |
-| **Impact** (TA0040) | T1486, T1490, T1489 | High |
+| T1003.001 | OS Credential Dumping | `win-credential-dumping-lsass.yml`, `mimikatz-indicators.yar` |
+| T1027 | Obfuscated Files or Information | `win-susp-powershell-encoded-cmd.yml` |
+| T1053.003 | Scheduled Task/Job (Cron) | `linux-cron-persistence.yml` |
+| T1059.001 / T1059.004 | Command and Scripting Interpreter | `windows-suspicious-powershell.yml`, `win-susp-powershell-encoded-cmd.yml`, `linux-reverse-shell.yml` |
+| T1505.003 | Server Software Component (Web Shell) | `webshell-generic.yar` |
+| T1547.001 | Boot or Logon Autostart Execution | `win-persistence-run-key.yml` |
+| T1548.001 | Abuse Elevation Control Mechanism | `linux-privilege-escalation-suid.yml` |
+| T1550.002 | Use Alternate Authentication Material (Pass the Hash) | `win-pass-the-hash.yml` |
+| T1558.003 | Steal or Forge Kerberos Tickets (Kerberoasting) | `win-kerberoasting.yml` |
+
+Full auto-generated report: [`examples/generated-coverage-report.md`](examples/generated-coverage-report.md). Navigator-ready layer file: [`examples/generated-navigator-layer.json`](examples/generated-navigator-layer.json) — upload it directly to the [ATT&CK Navigator](https://mitre-attack.github.io/attack-navigator/) to see it plotted on the real matrix.
+
+Growing this table means adding a rule with the correct ATT&CK tag and re-running the generator — not editing prose by hand.
 
 ---
 
@@ -672,21 +675,37 @@ PRECURSOR TIMELINE:
 
 ---
 
-## Example Attack Mitigation:
-```python
-# Example Python script to detect 'Lateral Movement' technique
-import splunklib.client
-service = splunklib.client.connect(username='admin', password='changeme')
-search_query = "index=security sourcetype=windows EventCode=4688"
-```
+## Working Tooling
+
+Beyond static rules and docs, this repository includes actual scripts you can run:
+
+| Tool | What It Does |
+|---|---|
+| [`tooling/attack-coverage-generator/`](tooling/attack-coverage-generator/) | Scans this repo's real Sigma/YARA rules and generates the coverage table above, plus a MITRE ATT&CK Navigator-ready layer file. Tested end-to-end against this repository's actual rule set. |
+
+## Related Open-Source Tools
+
+See [`resources/related-open-source-tools.md`](resources/related-open-source-tools.md) for pointers to ATT&CK Navigator, DeTT&CT, CALDERA, and Atomic Red Team — where each fits alongside what's in this repo.
 
 ---
 
 ## Installation:
+
+This is a rules-and-documentation repository, not an installable Python package — there's no `setup.py` or PyPI package. To use it:
+
 ```bash
 git clone https://github.com/mrezwanulbari/MITRE-ATT-CK-Threat-Defense-Framework.git
 cd MITRE-ATT-CK-Threat-Defense-Framework
-python setup.py install
+
+# Deploy Sigma rules to your SIEM using your platform's Sigma converter (e.g. sigma-cli / pySigma),
+# or your SIEM's native Sigma import if supported (Splunk, Sentinel, and Elastic all have converters)
+
+# Deploy YARA rules directly to your EDR/AV platform's custom YARA rule ingestion
+
+# Run the coverage generator (see tooling/attack-coverage-generator/README.md):
+cd tooling/attack-coverage-generator
+pip install -r requirements.txt
+python3 attack_coverage_generator.py --repo-root ../.. --output-report coverage.md --output-layer layer.json
 ```
 
 ---
@@ -710,3 +729,4 @@ MIT License
 ---
 
 > **Maintained by [Shakil Md. Rezwanul Bari](https://github.com/mrezwanulbari)** — Cybersecurity & Threat Intelligence Engineer focused on proactive cyber defense and critical infrastructure protection.
+
