@@ -1,0 +1,131 @@
+{
+  "name": "mrezwanulbari MITRE ATT&CK Threat Defense Framework \u2014 Detection Coverage",
+  "versions": {
+    "attack": "15",
+    "navigator": "4.9.1",
+    "layer": "4.5"
+  },
+  "domain": "enterprise-attack",
+  "description": "Auto-generated from actual Sigma/YARA rule ATT&CK tags in this repository. Green = detection coverage exists.",
+  "filters": {
+    "platforms": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ]
+  },
+  "sorting": 0,
+  "layout": {
+    "layout": "side",
+    "showID": true,
+    "showName": true
+  },
+  "hideDisabled": false,
+  "techniques": [
+    {
+      "techniqueID": "T1059.001",
+      "score": 100,
+      "color": "",
+      "comment": "Covered by: windows-suspicious-powershell.yml, win-susp-powershell-encoded-cmd.yml",
+      "enabled": true,
+      "metadata": [],
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1547.001",
+      "score": 100,
+      "color": "",
+      "comment": "Covered by: win-persistence-run-key.yml",
+      "enabled": true,
+      "metadata": [],
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1505.003",
+      "score": 100,
+      "color": "",
+      "comment": "Covered by: webshell-generic.yar",
+      "enabled": true,
+      "metadata": [],
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1558.003",
+      "score": 100,
+      "color": "",
+      "comment": "Covered by: win-kerberoasting.yml",
+      "enabled": true,
+      "metadata": [],
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1053.003",
+      "score": 100,
+      "color": "",
+      "comment": "Covered by: linux-cron-persistence.yml",
+      "enabled": true,
+      "metadata": [],
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1059.004",
+      "score": 100,
+      "color": "",
+      "comment": "Covered by: linux-reverse-shell.yml",
+      "enabled": true,
+      "metadata": [],
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1548.001",
+      "score": 100,
+      "color": "",
+      "comment": "Covered by: linux-privilege-escalation-suid.yml",
+      "enabled": true,
+      "metadata": [],
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1003.001",
+      "score": 100,
+      "color": "",
+      "comment": "Covered by: win-credential-dumping-lsass.yml, mimikatz-indicators.yar",
+      "enabled": true,
+      "metadata": [],
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1550.002",
+      "score": 100,
+      "color": "",
+      "comment": "Covered by: win-pass-the-hash.yml",
+      "enabled": true,
+      "metadata": [],
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T1027",
+      "score": 100,
+      "color": "",
+      "comment": "Covered by: win-susp-powershell-encoded-cmd.yml",
+      "enabled": true,
+      "metadata": [],
+      "showSubtechniques": false
+    }
+  ],
+  "gradient": {
+    "colors": [
+      "#ff6666",
+      "#ffe766",
+      "#8ec843"
+    ],
+    "minValue": 0,
+    "maxValue": 100
+  },
+  "legendItems": [],
+  "metadata": [],
+  "showTacticRowBackground": true,
+  "tacticRowBackground": "#dddddd",
+  "selectTechniquesAcrossTactics": true,
+  "selectSubtechniquesWithParent": false
+}
